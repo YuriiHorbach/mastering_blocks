@@ -28,4 +28,12 @@ puts '-'*10
 
 puts str_arr.reject { |i| i.length > 3}
 
+puts '-'*10
 
+puts scores.reject! { |i| i > 70}
+puts
+puts scores
+puts
+puts scores.reject! { |i| i.even?}
+puts
+puts scores
