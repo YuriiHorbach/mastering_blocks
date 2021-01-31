@@ -27,3 +27,37 @@ puts'-'*10
 puts flyers.any? {|i| i.status == :platinum}
 puts'-'*10
 puts flyers.detect {|i| i.status == :bronze}
+puts'-'*30
+
+platinum, other = flyers.partition {|i| i.status == :platinum}
+puts "Platinum"
+p platinum
+puts "Other"
+p other
+
+puts'-'*10
+
+selec_flyers = flyers.map {|el| puts "#{el.name.capitalize} (#{el.status.upcase})"}
+
+puts'-'*10
+
+flown_distances = flyers.map {|el| puts "#{el.name.capitalize} distance in km #{el.miles_flown * 1.6} "}
+puts flown_distances
+
+total_distance = flyers.reduce(0) {|sum, el| sum + el.miles_flown }
+
+puts "Total distance: #{total_distance}"
+
+total_flown_distances = flyers.reduce(0) {|sum, el| sum + (el.miles_flown * 1.6) }
+
+puts "Total distance in km: #{total_flown_distances}"
+
+puts'-'*10
+
+
+puts flyers.select {|i| i.status == :bronze}.map {|el| el.miles_flown * 1.6}.reduce(0,:+)
+
+puts "#{'Top flyer:'.ljust(20,'.')} #{flyers.max_by {|client| client.miles_flown}}"
+puts "#{'Economy flyer:'.ljust(20,'.')} #{flyers.min_by {|client| client.miles_flown}}"
+
+

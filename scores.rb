@@ -37,3 +37,27 @@ puts
 puts scores.reject! { |i| i.even?}
 puts
 puts scores
+
+puts 'Enumerable part 2'
+
+scores1 = [83, 71, 92, 64, 98, 87, 75, 69]
+
+scores_doubled = scores1.map {|el| el * 2}
+
+puts scores_doubled
+
+puts '-'*10
+
+scores_total = scores1.reduce(0) {|sum, el| sum + el}
+
+puts scores_total
+
+puts '-'*10
+
+evens, odds = scores1.partition {|el| el.even?}
+
+print evens
+puts
+print odds
+puts
+
