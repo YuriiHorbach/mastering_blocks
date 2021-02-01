@@ -1,3 +1,5 @@
+require_relative "my_enumerable"
+
 class Song
   attr_reader :name, :artist, :duration
 
@@ -20,7 +22,8 @@ end
 
 class Playlist
 
-  include Enumerable
+  # include Enumerable
+  include MyEnumerable
 
   def initialize(name)
     @name = name
@@ -69,17 +72,17 @@ playlist1.add_song(song3)
 
 # playlist1.each {|song| song.play}``
 
-selected_song = playlist1.select { |i| i.name == 'Plakala' }
+selected_song = playlist1.my_select { |i| i.name == 'Plakala' }
 p selected_song
 
-okie_songs = playlist1.select { |song| song.name =~ /akal/ }
+okie_songs = playlist1.my_select { |song| song.name =~ /akal/ }
 p okie_songs
 
-sum_duration = playlist1.reduce(0) {|sum, song| sum += song.duration}
+# sum_duration = playlist1.reduce(0) {|sum, song| sum += song.duration}
 
-p sum_duration
+# p sum_duration
 
-songs_titles = playlist1.map {|song| "#{song.name}"}
+songs_titles = playlist1.my_map {|song| "#{song.name}"}
 
 puts songs_titles
 
@@ -87,9 +90,9 @@ puts "-"*10
 
 playlist1.each_tagline { |tagline| puts tagline }
 
-puts "-"*10
+# puts "-"*10
 
-playlist1.each_by_artist("Antoshka") { |song| song.play }
+# playlist1.each_by_artist("Antoshka") { |song| song.play }
 
 puts "-"*10
 
