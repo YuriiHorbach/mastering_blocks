@@ -80,7 +80,6 @@ p okie_songs
 
 # sum_duration = playlist1.reduce(0) {|sum, song| sum += song.duration}
 
-# p sum_duration
 
 songs_titles = playlist1.my_map {|song| "#{song.name}"}
 
@@ -106,3 +105,20 @@ playlist1.each{ |song| song.each_filename{ |filename| puts filename } }
 # playlist1.each_with_index do |item, index|
 #   p item[index]
 # end
+
+p "-"*10
+
+non_okie_songs = playlist1.my_reject { |song| song.name =~ /man/ }
+p non_okie_songs
+
+p "-"*10
+
+p playlist1.my_detect { |song| song.artist == "Antoshka" }
+p playlist1.my_detect2 { |song| song.artist == "Antoshka" }
+p playlist1.my_any? { |song| song.artist == "Antoshka" }
+p playlist1.my_any? { |song| song.artist == "kakashka" }
+
+sum_duration = playlist1.my_reduce(0) {|sum, song| sum += song.duration}
+p sum_duration
+
+
